@@ -162,7 +162,7 @@ print("Sample standard deviation:", round(s, 4))
     Sample standard deviation: 32.3022
     
 
-Therefore, we learn that: $$ x̄=362.9114 $$ $$ S^{2}=1043.4323 $$ $$ S=\sqrt{S^{2}}=32.3022 $$
+Therefore, we learn that: $$x̄=362.9114$$, $$S^{2}=1043.4323$$, $$S=\sqrt{S^{2}}=32.3022$$
 
 Therefore, according to these information, we can perform **parameter estimation**.
 
@@ -171,22 +171,36 @@ Therefore, according to these information, we can perform **parameter estimation
 
 ##### Population Mean
 
-Since the sample size $ n=500>30 $, therefore, althought the sample data is not normally distributed, we can still approximately regard $ \bar{X} $ follows **normal distribution**.
+Since the sample size $n=500>30$, therefore, althought the sample data is not normally distributed, we can still approximately regard $\bar{X}$ follows **normal distribution**.
 
-As for $ \bar{X} $, we know that:
-$$ E(\bar{X})=μ $$
-$$ Var(\bar{X})=\sigma_{\bar{X}}^{2}=\frac{\sigma^{2}}{n}⇒\sigma_{\bar{X}}^{2}=\sqrt{\frac{\sigma^{2}}{n}} $$
-Among these parameters, $ \sigma_{\bar{X}}^{2} $ is the **standard error**. Therefore:
-$$ \bar{X}∼N(\mu,\frac{\sigma^{2}}{n}) $$
+As for $\bar{X}$, we know that:
+
+$$E(\bar{X})=μ$$
+
+$$Var(\bar{X})=\sigma_{\bar{X}}^{2}=\frac{\sigma^{2}}{n}⇒\sigma_{\bar{X}}^{2}=\sqrt{\frac{\sigma^{2}}{n}}$$
+
+Among these parameters, $\sigma_{\bar{X}}^{2}$ is the **standard error**. Therefore:
+
+$$\bar{X}∼N(\mu,\frac{\sigma^{2}}{n})$$
+
 or:
+
 $$ \frac{\bar{X}-\mu}{\sigma/\sqrt{n}}\sim N(0,1) $$
-However, we do not know the exact value of $ σ $, we only know $ S $, therefore, we need to replace $ \sigma $ with $ S $ and use following formula:
+
+However, we do not know the exact value of $σ$, we only know $S$, therefore, we need to replace $\sigma$ with $S$ and use following formula:
+
 $$ \frac{\bar{X}-\mu}{S/\sqrt{n}}\sim T_{\gamma} $$
-Therefore, the $ 100(1-\alpha)\% $confidence interval for the population mean $ \mu $ is given by:
+
+Therefore, the $100(1-\alpha)\%$ confidence interval for the population mean $\mu$ is given by:
+
 $$ \bar{X}\pm t_{(1-\alpha/2)}\frac{S}{\sqrt{n}} $$
-Thus, we estimated the **population mean** strength by a $ 95\% $ confidence interval using the sample data:
+
+Thus, we estimated the **population mean** strength by a $95\%$ confidence interval using the sample data:
+
 $$ \gamma=n-1=500-1=499 $$
+
 $$ \frac{S}{\sqrt{n}}=\frac{32.3022}{\sqrt{500}}=1.4446 $$
+
 $$ \alpha=1-0.95=0.05 $$
 
 
@@ -197,7 +211,7 @@ standard_error = s / (n ** 0.5)
 gamma = n - 1
 ```
 
-And then, we need to know the value of $ t_{1-\alpha/2} $, which is the value of $ t_{0.975} $ when the degree of freedom $ \gamma=499 $.
+And then, we need to know the value of $t_{1-\alpha/2}$, which is the value of $t_{0.975}$ when the degree of freedom $\gamma=499$.
 
 Therefore, using Python, we can get this value:
 
@@ -212,8 +226,10 @@ print(round(t_975, 4))
     
 
 Therefore:
+
 $$ t_{0.975}=1.9647 $$
-And next we can calculate the confidence interval for $ \mu $:
+
+And next we can calculate the confidence interval for $\mu$:
 
 
 ```python
@@ -227,15 +243,20 @@ print([lower_mu, upper_mu])
     [360.0731, 365.7496]
     
 
-This shows that we are $ 95\% $ confident that the interval $ [360.0731,365.7496] $ contains the **population mean** $ \mu $.
+This shows that we are $95\%$ confident that the interval $[360.0731,365.7496]$ contains the **population mean** $\mu$.
 
 ##### Population Variance
 
-As for using sample variance $ S^{2} $ to estimate population variance $ \sigma^{2} $, it uses the similar logic. Because sample size $ n $ is greater than 30, so we can know that:
+As for using sample variance $S^{2}$ to estimate population variance $\sigma^{2}$, it uses the similar logic. Because sample size $n$ is greater than 30, so we can know that:
+
 $$ \frac{(n-1)S^{2}}{\sigma^{2}}\sim X_{n-1}^{2} $$
-Since $ 𝜒^{2} $ distribution is not symmetry, the $ 100(1-\alpha)\% $ confidence interval for $ \sigma^{2} $ is given by:
+
+Since $𝜒^{2}$ distribution is not symmetry, the $100(1-\alpha)\%$ confidence interval for $\sigma^{2}$ is given by:
+
 $$ \frac{(n-1)S^{2}}{𝜒_{(1-\alpha/2)}^{2}}<\sigma^{2}<\frac{(n-1)S^{2}}{𝜒_{(\alpha/2)}^{2}} $$
-And in this case, the degree of freedom of $ 𝜒^{2} $ distribution is $ \gamma=n-1=500-1=499 $
+
+And in this case, the degree of freedom of $𝜒^{2}$ distribution is $\gamma=n-1=500-1=499$
+
 Therefore, we can calculate the 95 percent confidence interval using Python:
 
 
@@ -256,11 +277,11 @@ print([lower_sigma2, upper_sigma2])
     [925.1642, 1186.0479]
     
 
-This shows that we are $ 95\% $ confident that the interval $ [925.1642,1186.0479] $ contains the **population variance** $ \sigma^{2} $. **Variance** can reflect the **degree of dispersion** of data. According to the interval we calculated, we found that the variance of the data is large, which means that the degree of dispersion of the data is large.
+This shows that we are $95\%$ confident that the interval $[925.1642,1186.0479]$ contains the **population variance** $\sigma^{2}$. **Variance** can reflect the **degree of dispersion** of data. According to the interval we calculated, we found that the variance of the data is large, which means that the degree of dispersion of the data is large.
 
 ##### Population Porpotion
 
-According to climate activist Bill McKibben and his organization 350.org, atmospheric $ CO_{2} $ concentrations below **350 ppm** are considered as **good condition**.And using Python, we can get the proportion of the good condition days:
+According to climate activist Bill McKibben and his organization 350.org, atmospheric $CO_{2}$ concentrations below **350 ppm** are considered as **good condition**.And using Python, we can get the proportion of the good condition days:
 
 
 ```python
@@ -276,13 +297,17 @@ print(p_hat)
     0.41
     
 
-This shows that $ \hat{p}=0.41 $
+This shows that $\hat{p}=0.41$
 
-Since $ n\hat{p}=500\times0.41=205>5 $ and $ n(1-\hat{p})=500\times(1-0.41)=295>5 $, we can learn that:
+Since $n\hat{p}=500\times0.41=205>5$ and $n(1-\hat{p})=500\times(1-0.41)=295>5$, we can learn that:
+
 $$ \frac{\hat{p}-p}{\sqrt{\frac{p(1-p)}{n}}}\sim N(0,1) $$
-Therefore, we can estimate the $ 100(1-\alpha)\% $ confidence interval for population proportion of good condition days with this formula:
+
+Therefore, we can estimate the $100(1-\alpha)\%$ confidence interval for population proportion of good condition days with this formula:
+
 $$ \hat{p}\pm𝓏_{(1-\alpha/2)}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} $$
-Accoding to Python, we can work out the $ 95\% $ confidence interval for population proportion of good condition days:
+
+Accoding to Python, we can work out the $95\%$ confidence interval for population proportion of good condition days:
 
 
 ```python
@@ -300,7 +325,7 @@ print([lower_p, upper_p])
     [0.3669, 0.4531]
     
 
-Therefore, we can have a estimation with 95% confidence that the population porprotion of good condition days is in the interval $ [0.3669,0.4531] $, which means the good days in this dataset is relatively less and the air quality in Hawaii is not very good.
+Therefore, we can have a estimation with 95% confidence that the population porprotion of good condition days is in the interval $[0.3669,0.4531]$, which means the good days in this dataset is relatively less and the air quality in Hawaii is not very good.
 
 ### Hypothesis Testing
 
@@ -308,7 +333,7 @@ Therefore, we can have a estimation with 95% confidence that the population porp
 
 Scientific research shows that when carbon dioxide concentration exceeds **400 ppm**, the rate of global temperature rise is likely to accelerate, posing a major threat to extreme weather, sea level rise, ecosystems and agriculture.Therefore, we regard the day that the carbon dioxide concentration exceeds 400 ppm as a **bad day**.
 
-And then, we draw a orange line at which carbon dioxide concetration is 400 in the population line chart. After observing the chart, we easily found that the horizontal line $ y=400 $ in the line chart is approximately intersects with the daily carbon dioxide concentration line at about when $ x=15000 $.
+And then, we draw a orange line at which carbon dioxide concetration is 400 in the population line chart. After observing the chart, we easily found that the horizontal line $y=400$ in the line chart is approximately intersects with the daily carbon dioxide concentration line at about when $x=15000$.
 
 
 
@@ -329,15 +354,21 @@ plt.show()
     
 
 
-We have already know the population size is $ N=18179 $. Therefore, According to this observation, we can easily approximately calculate the proportion of the number bad days in population:
+We have already know the population size is $N=18179$. Therefore, According to this observation, we can easily approximately calculate the proportion of the number bad days in population:
+
 $$ p=\frac{N-15000}{N}=\frac{18179-15000}{18179}\approx0.1749 $$
+
 Therefore, according our estimation, we can easily propose a hypothesis that the population proportion of the bad days will not grater than 0.22, which can be expressed as follows:
+
 $$ H_{0}:p\ge0.22 $$
+
 $$ H_{A}:p<0.22 $$
 
-Therefore, since $ np_{0}=500\times0.22=110>5 $ and $ n(1-p_{0})=500\times(1-0.22)=190>5 $, so the test statistic is approximately distributed as follows:
+Therefore, since $np_{0}=500\times0.22=110>5$ and $n(1-p_{0})=500\times(1-0.22)=190>5$, so the test statistic is approximately distributed as follows:
+
 $$ \frac{\hat{p}-p_{0}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}}\sim N(0,1) $$
-In this case, we can first calculate the $ \hat{p} $ using Python according to the sample data:
+
+In this case, we can first calculate the $\hat{p}$ using Python according to the sample data:
 
 
 ```python
@@ -353,13 +384,18 @@ print(p_hat)
     0.17
     
 
-Therefore, $ \hat{p}=0.17 $, which means:
+Therefore, $\hat{p}=0.17$, which means:
+
 $$ \frac{\hat{p}-p_{0}}{\sqrt{\frac{p_{0}(1-p_{0})}{n}}}=\frac{0.17-0.22}{\sqrt{\frac{0.5(1-0.5)}{500}}}\approx-2.2361 $$
+
 since:
+
 $$ H_{0}:p\ge0.22 $$
+
 $$ H_{A}:p<0.22 $$
+
 So we need to do a one-tail test.
-Let the significance level $ \alpha=0.05 $, and then we can calculate the $ p $-value in Python:
+Let the significance level $\alpha=0.05$, and then we can calculate the $p$-value in Python:
 
 
 ```python
@@ -371,7 +407,7 @@ print(round(p_value, 5))
     0.01267
     
 
-Therefore, the $ p $-value here is 0.01267, which is smaller than 0.05 ($\alpha$), so we can reject $ H_{0} $, which means we can conclude that the proportion of bad days in pupolation is smaller than 0.22.
+Therefore, the $p$-value here is 0.01267, which is smaller than 0.05 ($\alpha$), so we can reject $H_{0}$, which means we can conclude that the proportion of bad days in pupolation is smaller than 0.22.
 
 ##### Population Correlation Coefficient
 
@@ -393,18 +429,26 @@ plt.show()
 
 
 This is the line chart of the population. Observing the chart, we can know that the data fluctuates greatly locally, but shows an overall upward trend. Thus, we can easily propose a hypothesis: the carbon dioxide concentration and the date are strongly positive correlated, which means:
+
 $$ H_{0}:\rho\ge0 $$
+
 $$ H_{A}:\rho<0 $$
-Therefore, we can do a one-tail test at the $ \alpha=0.05 $ significant level.
+
+Therefore, we can do a one-tail test at the $\alpha=0.05$ significant level.
 
 First, we need to do some transformation. Instead of using date, we need to use integers to represent the date, which means that the first day in the dataset 30 March, 1958 will be represented as 0, and the last day in the dataset 3 March, 2025 will be represented as 18178.
 
 And next, we know that:
+
 $$ r=\frac{SS_{xy}}{SS_{xx}SS_{yy}} $$
+
 $$ SS_{xy}=Σx_{i}y_{i}-\frac{\Sigma x_{i}\Sigma y_{i}}{n} $$
+
 $$ SS_{xx}=\Sigma x_{i}^{2}-\frac{(\Sigma x_{i})^{2}}{n} $$
+
 $$ SS_{yy}=\Sigma y_{i}^{2}-\frac{(\Sigma y_{i})^{2}}{n} $$
-So, according to the sample data, we can get the value of $ r $ first in Python:
+
+So, according to the sample data, we can get the value of $r$ first in Python:
 
 
 ```python
@@ -423,10 +467,14 @@ print(round(r, 4))
     0.9921
     
 
-Therefore, $ r=0.9921 $, which is close to 1 and shows the **strong positive correlation** between daily carbon dioxide concentration and the date in sample data. And next, we know that:
+Therefore, $r=0.9921$, which is close to 1 and shows the **strong positive correlation** between daily carbon dioxide concentration and the date in sample data. And next, we know that:
+
 $$ \frac{r\sqrt{n-2}}{\sqrt{1-r^{2}}}\sim T_{\gamma} $$
+
 $$ \gamma=n-2 $$
+
 $$ \alpha=0.05 $$
+
 Therefore, we can perform the one-tail test in Python:
 
 
@@ -447,7 +495,7 @@ print(t_95)
     1.6479191388549999
     
 
-Since $ \frac{r\sqrt{n-2}}{\sqrt{1-r^{2}}}=176.7182>1.6479=t_{0.95} $, we can know the the population correlation coefficient is greater than zero (positive correlation) at a 0.05 significant level, which means that the daily carbon dioxide concentration in Hawaii will become higher in the future.
+Since $\frac{r\sqrt{n-2}}{\sqrt{1-r^{2}}}=176.7182>1.6479=t_{0.95}$, we can know the the population correlation coefficient is greater than zero (positive correlation) at a 0.05 significant level, which means that the daily carbon dioxide concentration in Hawaii will become higher in the future.
 
 ## Probability
 
@@ -522,8 +570,10 @@ First, we need to define some main events:
 ```Event L: a day that is a low carbon dioxide concentration day.```
 
 Therefore, since there are about 241 days in peak tourist season in one year, so we can learn that:
+
 $$ P(H)=\frac{241\times10}{365\times7+366\times3}\approx0.6597 $$
-Next we need to know the value of  $ P(L|H) $ and $ P(\bar{L}|H) $. Since the population size of the data is 3653, which is too large to calculate, therefore, we decided to randomly select 500 data to represent the population value:
+
+Next we need to know the value of  $P(L|H)$ and $P(\bar{L}|H)$. Since the population size of the data is 3653, which is too large to calculate, therefore, we decided to randomly select 500 data to represent the population value:
 
 
 ```python
@@ -535,10 +585,14 @@ sample_date = ['2015-02-07', '2018-04-04', '2018-01-10', '2019-11-09', '2021-06-
 ```
 
 We know that:
-$$ P(L|H)=\frac{P(L\cap H)}{P(H)} $$
+
+$$P(L|H)=\frac{P(L\cap H)}{P(H)}$$
+
 and
-$$ P(\bar{L}|H)=\frac{P(\bar{L}\cap H)}{P(H)} $$
-So according to the sample data, we can get the value of $ P(L|H) $ and $ P(\bar{L}|H) $ in Python:
+
+$$P(\bar{L}|H)=\frac{P(\bar{L}\cap H)}{P(H)}$$
+
+So according to the sample data, we can get the value of $P(L|H)$ and $P(\bar{L}|H)$ in Python:
 
 
 ```python
@@ -584,24 +638,32 @@ print(round(p_nl_given_h, 4))
     
 
 Therefore:
+
 $$ P(L|H)=0.4241 $$
+
 $$ P(\bar{L}|H)=0.5759 $$
+
 This means that when it is a day in **peak tourist season**, there is a probability of 0.5759 that this day's carbon dioxide concentration is **higher** than the average annual carbon dioxide concentration, while there is only a propability of 0.4241 that this day's carbon dioxide concentration is **lower** than the average annual carbon dioxide concentration.
 
 This shows that when Hawaii is in the **peak tourist season**, it is very likely that the carbon dioxide concentration will become **higher**, which means tourism will have a significant impact on air quality in Hawaii.
 
 ##### Analysis with Bayes' Theory
 
-In order to further present the arguement that the tourism will make daily carbon dioxide concentration in Hawaii higher, we need to know that whether it will be a peak tourist day or not if this day's carbon dioxide concentration is lower than the average annual carbon dioxide concentration, which means we need to get the value of $ P(H|\bar{L}) $ and $ P(\bar{H}|\bar{L}) $.
+In order to further present the arguement that the tourism will make daily carbon dioxide concentration in Hawaii higher, we need to know that whether it will be a peak tourist day or not if this day's carbon dioxide concentration is lower than the average annual carbon dioxide concentration, which means we need to get the value of $P(H|\bar{L})$ and $P(\bar{H}|\bar{L})$.
 
 Since:
-$$ P(H|\bar{L})=\frac{P(H\cap\bar{L})}{P(\bar{L})} $$
-$$ P(\bar{H}|\bar{L})=\frac{P(\bar{H}\cap\bar{L})}{P(\bar{L})} $$
-So we need to get the value of $ P(\bar{L}) $ first.
 
-We have already know that $ P(H)=0.6597 $, therefore, according to the **law of total propability**, we can learn that:
+$$ P(H|\bar{L})=\frac{P(H\cap\bar{L})}{P(\bar{L})} $$
+
+$$ P(\bar{H}|\bar{L})=\frac{P(\bar{H}\cap\bar{L})}{P(\bar{L})} $$
+
+So we need to get the value of $P(\bar{L})$ first.
+
+We have already know that $P(H)=0.6597$, therefore, according to the **law of total propability**, we can learn that:
+
 $$ P(L)=P(L|H)P(H)+P(L|\bar{H})P(\bar{H})=P(L|H)P(H)+P(L|\bar{H})(1-P(H)) $$
-Thus, we need to get the value of $ P(L|\bar{H}) $ in the sample using Python.
+
+Thus, we need to get the value of $P(L|\bar{H})$ in the sample using Python.
 
 
 ```python
@@ -619,7 +681,7 @@ print(round(p_l_given_nh, 4))
     0.6341
     
 
-Therefore, $ P(L|\bar{H})=0.6341 $. And then, we can get value of $ P(L) $:
+Therefore, $P(L|\bar{H})=0.6341 $. And then, we can get value of $P(L)$:
 
 
 ```python
@@ -631,13 +693,15 @@ print(round(p_l, 4))
     0.4956
     
 
-This shows that $ P(L)=0.4956 $, which means about 0.4956 days are high carbon dioxide concentration days.
+This shows that $P(L)=0.4956$, which means about 0.4956 days are high carbon dioxide concentration days.
 
 And then, according to the **Bayes' Theory** and the **Complement Rule**, we can know that:
+
 $$ P(H|\bar{L})=\frac{P(H\cap\bar{L})}{P(\bar{L})}=\frac{P(\bar{L}|H)P(H)}{P(\bar{L})}=\frac{P(\bar{L}|H)P(H)}{1-P(L)} $$
+
 $$ P(\bar{H}|\bar{L})=1-P(H|\bar{L}) $$
 
-And then, according to the **Bayes' Theory**, we can get the value of $ P(H|\bar{L}) $ and $ P(\bar{H}|\bar{L}) $ in Python:
+And then, according to the **Bayes' Theory**, we can get the value of $P(H|\bar{L})$ and $P(\bar{H}|\bar{L})$ in Python:
 
 
 ```python
@@ -652,8 +716,11 @@ print(round(p_nh_given_nl, 4))
     
 
 This shows:
+
 $$ P(H|\bar{L})=0.7531 $$
+
 $$ P(\bar{H}|\bar{L})=0.2469 $$
+
 This means that for a day with **high carbon dioxide concentration**, there is a 0.7531 probability that it is a **peak tourist day** and a 0.2469 probability that it is a **low tourist day**. This shows that peak tourist seasons are usually accompanied by high concentrations of carbon dioxide and high carbon dioxide concentration day is more likely to be a peak tourist day.
 
 ### Summary of Probability Analysis
@@ -667,9 +734,13 @@ In summary, after analyzing some relavent probabilities, although we cannot make
 In this part, we will perform a simple linear regression to build a model and identify the potantiel trend of the daily carbon dioxide concentration in Hawaii.
 
 As we know:
+
 $$ \hat{y}=a+bx $$
+
 $$ b=\frac{SS_{xy}}{SS_{xx}} $$
+
 $$ a=\bar{y}-b\bar{x} $$
+
 Therefore, we can get the value of $a$ and $b$ in Python:
 
 ### Build Linear Regression Model
@@ -689,7 +760,9 @@ print(round(a, 4))
     
 
 Therefore:
+
 $$ \hat{y}=305.2181+0.006244x $$
+
 And then, we can draw the chart of sample data and the least square regression line using Python:
 
 
@@ -708,9 +781,13 @@ plt.show()
 
 
 In this chart, blue points are sample data and the orange line is the least square regression line. Observing the image, we can find that the straight line is consistent with the data. And then, we can calculate the coefficient of determination to examine whether our linear regression is good or not. Therefore:
+
 $$ r^{2}=\frac{SSR}{SST}=\frac{SST-SSE}{SST}=\frac{bSS_{xy}}{SS_{yy}} $$
+
 or:
+
 $$ r\approx0.9921⇒ r^{2}\approx0.9921^{2} $$
+
 So, we can use Python to get this value:
 
 
@@ -722,7 +799,7 @@ print(r_2)
     0.9843037437333554
     
 
-Thus, $ r^{2}=0.9843 $. Since that $ r^{2}\in[0,1] $ and our $ r^{2} $ is pretty close to 1, therefore, we can say that our linear regression is good, which means our regression model can explain 98.43037% of total variance in the daily carbon dioxide concentration in Hawaii.
+Thus, $r^{2}=0.9843$. Since that $r^{2}\in[0,1]$ and our $r^{2}$ is pretty close to 1, therefore, we can say that our linear regression is good, which means our regression model can explain 98.43037% of total variance in the daily carbon dioxide concentration in Hawaii.
 
 ### Application of Linear Regression Model
 
@@ -730,15 +807,20 @@ Therefore, we can use this linear regression model to predict the future daily c
 
 On March 15, 2021, General Secretary Xi Jinping proposed at the 9th meeting of the Central Financial and Economic Affairs Commission that China strive to achieve "carbon neutrality" by 2060. So, how about Hawaii in American? Therefore, we decided to calculate **the carbon dioxide concentration in Hawaii on Jan. 1, 2060** using our linear regression model.
 
-First, we need to transfer the date "Jan 1, 2060" to an integer using the same rule above. Since Mar 30, 1958 this number 0, Jan 1, 2060 should be presented by 37167, which means $ x=37167 $. Therefore:
-$$ \hat{y}=305.2181+0.006244x=305.2181+0.006244\times37167\approx537.2888 $$
+First, we need to transfer the date "Jan 1, 2060" to an integer using the same rule above. Since Mar 30, 1958 this number 0, Jan 1, 2060 should be presented by 37167, which means $x=37167$. Therefore:
+$$\hat{y}=305.2181+0.006244x=305.2181+0.006244\times37167\approx537.2888$$
 So we can know that the **carbon dioxide concentration will be 537.2888ppm on Jan 1, 2060 in Hawaii**, which is already higher than 500 ppm.
 
 However, research shows that when the concentration of carbon dioxide in the air exceeds **500 ppm**, it is harmful to the human body. Therefore, the air quality is poor on Jan 1, 2060. Meanwhile, we can also use the linear regression model to calculate the **when will the carbon diocide concentration exceeds 500ppm**:
+
 $$ \hat{y}=500 $$
+
 $$ \hat{y}=305.2181+0.006244x $$
+
 $$ ⇓ $$
+
 $$ x=\frac{\hat{y}-305.2181}{0.006244}=\frac{500-305.2181}{0.006244}\approx31195.0512 $$
+
 This means that **after about 31195 days since Mar 30, 1958**, which is on about **Aug 26, 2043**, the daily carbon dioxide concentration will exceeds 500 ppm, which is harmful to human health.
 
 ## Conclusion
@@ -747,9 +829,9 @@ Through our analysis of the daily carbon dioxide concentration data from Mar 30,
 1. The data fluctuates greatly locally, but shows an overall upward trend.
 2. Population data is skew to the right, which means the population mean is greater than the variance.
 3. Population parameters:
-  - Mean is in the interval of $ [360.0731,365.7496] $
-  - Variance is in the interval of $ [925.1642,1186.0479] $, which means the degree of dispersion of the data is large.
-  - Proportion of daily carbon dioxide concentration in Hawaii below 350ppm is in the interval of $ [0.3669,0.4531] $, which means the air quality in Hawaii these years is not very good.
+  - Mean is in the interval of $[360.0731,365.7496]$
+  - Variance is in the interval of $[925.1642,1186.0479]$, which means the degree of dispersion of the data is large.
+  - Proportion of daily carbon dioxide concentration in Hawaii below 350ppm is in the interval of $[0.3669,0.4531]$, which means the air quality in Hawaii these years is not very good.
   - Proportion of daily carbon dioxide concentration in Hawaii exceeds 400ppm is smaller than 0.22
 4. Relationship between daily carbon dioxide concentration in Hawaii and date:
   - Sample correlation coefficeint is 0.9921
@@ -759,7 +841,9 @@ Through our analysis of the daily carbon dioxide concentration data from Mar 30,
   - In a day that the carbon dioxide concentration is higher than the annual daily carbon dioxide concentration, it is more likely in the peak tourist season.
 6. Linear regression analysis:
   - The relationship between date and daily carbon dioxide concentrartion in Hawaii follows such linear regression model:
+  - 
   $$ \hat{y}=305.2181+0.006244x $$
+
   - In Aug 26, 2043, the daily carbon dioxide concentrartion in Hawaii will exceeds 500ppm
   - In Jan 1, 2060, the daily carbon dioxide concentration in Hawaii will be 537.2888ppm
 
