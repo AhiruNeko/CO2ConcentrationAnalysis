@@ -841,7 +841,7 @@ Through our analysis of the daily carbon dioxide concentration data from Mar 30,
   - In a day that the carbon dioxide concentration is higher than the annual daily carbon dioxide concentration, it is more likely in the peak tourist season.
 6. Linear regression analysis:
   - The relationship between date and daily carbon dioxide concentrartion in Hawaii follows such linear regression model:
-  - 
+
   $$ \hat{y}=305.2181+0.006244x $$
 
   - In Aug 26, 2043, the daily carbon dioxide concentrartion in Hawaii will exceeds 500ppm
